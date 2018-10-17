@@ -118,16 +118,20 @@ abstract class Brizy_Editor_Asset_StaticFile {
 
 	/**
 	 * @param $filename
+	 * @param array $headers
 	 */
-	public function send_file( $filename ) {
+	public function send_file( $filename, $headers = array() ) {
 		if ( file_exists( $filename ) ) {
+
+			$defaultHeaders = array(
+				'Content-Type'  => $this->get_mime( $filename, 1 ),
+				'Cache-Control' => 'max-age=600'
+			);
 
 			$content = file_get_contents( $filename );
 
 			// send headers
-			$headers                   = array();
-			$headers['Content-Type']   = $this->get_mime( $filename, 1 );
-			$headers['Cache-Control']  = 'max-age=600';
+			$headers = array_merge( $defaultHeaders, $headers );
 
 			foreach ( $headers as $key => $val ) {
 				if ( is_array( $val ) ) {

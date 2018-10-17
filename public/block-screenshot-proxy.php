@@ -32,11 +32,14 @@ class Brizy_Public_BlockScreenshotProxy extends Brizy_Public_AbstractProxy {
 
 		$types = array( 'normal', 'global', 'saved' );
 
+		$noCacheHeaders = array(
+			'Cache-Control' => 'no-cache, no-store'
+		);
+
 		foreach ( $types as $type ) {
 			$filePath = $this->getBlockScreenshotPath( $blockName, $type, $blockPost );
 			if ( file_exists( $filePath ) ) {
-				$this->send_file( $filePath );
-
+				$this->send_file( $filePath, $noCacheHeaders );
 				return;
 			}
 		}
