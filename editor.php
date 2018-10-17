@@ -22,6 +22,7 @@ class Brizy_Editor {
 			$this->runMigrations();
 		} catch ( Brizy_Admin_Migrations_UpgradeRequiredException $e ) {
 			Brizy_Admin_Flash::instance()->add_error( 'Please upgrade Brizy to the latest version.' );
+
 			return;
 		}
 
@@ -186,6 +187,7 @@ class Brizy_Editor {
 	private function loadEditorApi( $project, $post, $user ) {
 		try {
 			new Brizy_Editor_API( $project, $post );
+			new Brizy_Editor_BlockScreenshotApi( $project, $post );
 
 			// for other apis
 			do_action( 'brizy_register_api_methods', array( $user, $project, $post ) );
@@ -244,9 +246,10 @@ class Brizy_Editor {
 			$project     = Brizy_Editor_Project::get();
 			$url_builder = new Brizy_Editor_UrlBuilder( $project );
 
-			$config    = null;
-			$proxy     = new Brizy_Public_AssetProxy( $url_builder, $config );
-			$crop_roxy = new Brizy_Public_CropProxy( $url_builder, $config );
+			$config          = null;
+			$proxy           = new Brizy_Public_AssetProxy( $url_builder, $config );
+			$crop_roxy       = new Brizy_Public_CropProxy( $url_builder, $config );
+			$screenshot_roxy = new Brizy_Public_BlockScreenshotProxy( new Brizy_Editor_UrlBuilder( $project ), $config );
 		} catch ( Exception $e ) {
 			Brizy_Logger::instance()->exception( $e );
 		}
