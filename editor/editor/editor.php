@@ -178,9 +178,6 @@ class Brizy_Editor_Editor_Editor {
 			),
 			'applications'    => array(
 				'form' => array(
-					'iframeUrl' => $this->urlBuilder->application_form_url(),
-					'apiUrl'    => Brizy_Config::BRIZY_APPLICATION_INTEGRATION_URL,
-					'wpApiUrl'  => set_url_scheme( admin_url( 'admin-ajax.php' ) ),
 					'submitUrl' => add_query_arg( 'action', 'brizy_submit_form', set_url_scheme( admin_url( 'admin-ajax.php' ) ) )
 				)
 			),
