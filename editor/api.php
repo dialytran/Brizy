@@ -257,7 +257,6 @@ class Brizy_Editor_API {
 					'project_language' => $_REQUEST['project_language'],
 					'form_id'          => $form->getId(),
 				) );
-
 			}
 
 			if ( ! $form ) {

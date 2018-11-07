@@ -62,11 +62,7 @@ class Brizy_Editor_UrlBuilder {
 
 	public function application_form_notification_url() {
 
-		$urls = array();
-
-		foreach ( Brizy_Config::getEditorBaseUrls() as $url ) {
-			$urls[] = $url . Brizy_Config::BRIZY_APPLICATION_FORM_NOTIFICATION_URL;
-		}
+		$urls = array( Brizy_Config::BRIZY_APPLICATION_FORM_NOTIFICATION_URL );
 
 		return new Brizy_Admin_UrlIterator( $urls );
 	}
