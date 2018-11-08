@@ -166,6 +166,13 @@ class Brizy_Editor_Editor_Editor {
 					'setFeaturedImage'           => Brizy_Editor_API::AJAX_SET_FEATURED_IMAGE,
 					'setFeaturedImageFocalPoint' => Brizy_Editor_API::AJAX_SET_FEATURED_IMAGE_FOCAL_POINT,
 					'removeFeaturedImage'        => Brizy_Editor_API::AJAX_REMOVE_FEATURED_IMAGE,
+					'getDefaultForm'             => Brizy_Editor_API::AJAX_GET_DEFAULT_FORM,
+					'getForm'                    => Brizy_Editor_API::AJAX_GET_FORM,
+					'createForm'                 => Brizy_Editor_API::AJAX_CREATE_FORM,
+					'deleteForm'                 => Brizy_Editor_API::AJAX_DELETE_FORM,
+					'formIntegrationStatus'      => Brizy_Editor_API::AJAX_FORM_INTEGRATION_STATUS,
+					'submitForm'                 => Brizy_Editor_API::AJAX_SUBMIT_FORM,
+
 				),
 				'plugins'         => array(
 					'dummy'       => true,
